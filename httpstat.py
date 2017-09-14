@@ -259,6 +259,7 @@ def main():
     )
 
     # ip
+    show_ip = 0;
     if show_ip:
         s = 'Connected to {}:{} from {}:{}'.format(
             cyan(d['remote_ip']), cyan(d['remote_port']),
@@ -285,6 +286,7 @@ def main():
     print()
 
     # body
+    show_body = 1;
     if show_body:
         body_limit = 1024
         with open(bodyf.name, 'r') as f:
@@ -344,6 +346,7 @@ def main():
     print(stat)
 
     # speed, originally bytes per second
+    show_speed = 1
     if show_speed:
         print('speed_download: {:.1f} KiB/s, speed_upload: {:.1f} KiB/s'.format(
             d['speed_download'] / 1024, d['speed_upload'] / 1024))
