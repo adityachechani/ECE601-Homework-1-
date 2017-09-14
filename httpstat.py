@@ -258,16 +258,12 @@ def main():
         range_transfer=d['time_total'] - d['time_starttransfer'],
     )
 
-    # ip
-    show_ip = 0;
-    if show_ip:
-        s = 'Connected to {}:{} from {}:{}'.format(
-            cyan(d['remote_ip']), cyan(d['remote_port']),
-            d['local_ip'], d['local_port'],
-        )
-        print(s)
-        print()
-
+    # print stat
+    if url.startswith('https://'):
+        template = https_template
+    else:
+        template = http_template
+    
     # print header & body summary
     with open(headerf.name, 'r') as f:
         headers = f.read().strip()
@@ -284,6 +280,17 @@ def main():
             print(grayscale[14](line[:pos + 1]) + cyan(line[pos + 1:]))
 
     print()
+    
+        # ip
+    show_ip = 0;
+    if show_ip:
+        s = 'Connected to {}:{} from {}:{}'.format(
+            cyan(d['remote_ip']), cyan(d['remote_port']),
+            d['local_ip'], d['local_port'],
+        )
+        print(s)
+        print()
+
 
     # body
     show_body = 1;
@@ -311,11 +318,6 @@ def main():
         lg.debug('rm body file %s', bodyf.name)
         os.remove(bodyf.name)
 
-    # print stat
-    if url.startswith('https://'):
-        template = https_template
-    else:
-        template = http_template
 
     # colorize template first line
     tpl_parts = template.split('\n')
