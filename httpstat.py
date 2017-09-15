@@ -295,7 +295,7 @@ def main():
     # body
     show_body = 1;
     if show_body:
-        body_limit = 1024
+        body_limit = 2048
         with open(bodyf.name, 'r') as f:
             body = f.read().strip()
         body_len = len(body)
