@@ -84,6 +84,7 @@ for pybin in python python3; do
 
     echo "$out" | grep -q 'stored in'
     assert_exit 0
+    //change something
 
     title "HTTPSTAT_SHOW_BODY=true HTTPSTAT_SAVE_BODY=false, has 'is truncated', no 'stored in'"
     out=$(HTTPSTAT_SHOW_BODY=true HTTPSTAT_SAVE_BODY=false \
